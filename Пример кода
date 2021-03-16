@@ -1,0 +1,710 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WorkBook_2
+{
+    public partial class main : Form
+    {
+        public static string names;
+        public static string group;
+        public static int last;
+
+        public int ena=0;
+
+        public main()
+        {
+            InitializeComponent();
+            if (login.student == false)
+            {
+                results.Enabled = true;
+                results.Visible = true;
+
+                lesson1.Enabled = true;
+                lesson2.Enabled = true;
+                lesson3.Enabled = true;
+                lesson4.Enabled = true;
+                lesson5.Enabled = true;
+                lesson6.Enabled = true;
+                lesson7.Enabled = true;
+                lesson8.Enabled = true;
+                lesson9.Enabled = true;
+                lesson10.Enabled = true;
+                lesson11.Enabled = true;
+                lesson12.Enabled = true;
+                lesson13.Enabled = true;
+                lesson14.Enabled = true;
+                lesson15.Enabled = true;
+                lesson16.Enabled = true;
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (login.student == true)
+                {
+                    if (ena >= 1)
+                    {
+                        //students
+                        OleDbConnection students = new OleDbConnection();
+                        students.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmd = new OleDbCommand("INSERT INTO [Студенты] ([ФИО], [Группа],[№ последнего урока]) VALUES ('" + names + "', '" + group + "', '" + last + "')", students);
+                        students.Open();
+                        cmd.ExecuteNonQuery();
+                        this.студентыTableAdapter.Fill(this.студентыDataSet.Студенты);
+                        students.Close();
+                    }
+
+                    if (ena >= 1)
+                    {
+                        //l1
+                        OleDbConnection l1 = new OleDbConnection();
+                        l1.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl1 = new OleDbCommand("INSERT INTO [Урок 1] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2]) VALUES ('" + names + "', '" + les1ex2.date1 + "', '" + les1ex1.l11 + "', '" + les1ex2.l12 + "')", l1);
+                        l1.Open();
+                        cmdl1.ExecuteNonQuery();
+                        this.урок_1TableAdapter.Fill(this.урок1DataSet.Урок_1);
+                        l1.Close();
+                    }
+
+                    if (ena >= 2)
+                    {
+                        //l2
+                        OleDbConnection l2 = new OleDbConnection();
+                        l2.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl2 = new OleDbCommand("INSERT INTO [Урок 2] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4],[Упражнение 5],[Ссылка на упражнение 6],[Ссылка на упражнение 7]) VALUES ('" + names + "', '" + les2ex7.date2 + "', '" + les2ex1.l21 + "', '" + les2ex2.l22 + "', '" + les2ex3.l23 + "', '" + les2ex4.l24 + "', '" + les2ex5.l25 + "', '" + les2ex6.l26path + "', '" + les2ex7.l27path + "')", l2);
+                        l2.Open();
+                        cmdl2.ExecuteNonQuery();
+                        this.урок_2TableAdapter.Fill(this.урок2DataSet.Урок_2);
+                        l2.Close();
+                    }
+
+                    if (ena >= 3)
+                    {
+                        //l3
+                        OleDbConnection l3 = new OleDbConnection();
+                        l3.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl3 = new OleDbCommand("INSERT INTO [Урок 3] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3]) VALUES ('" + names + "', '" + les3ex3.date3 + "', '" + les3ex1.l31 + "', '" + les3ex2.l32 + "', '" + les3ex3.l33 + "')", l3);
+                        l3.Open();
+                        cmdl3.ExecuteNonQuery();
+                        this.урок_3TableAdapter.Fill(this.урок3DataSet.Урок_3);
+                        l3.Close();
+                    }
+
+                    if (ena >= 4)
+                    {
+                        //l4
+                        OleDbConnection l4 = new OleDbConnection();
+                        l4.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl4 = new OleDbCommand("INSERT INTO [Урок 4] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4],[Упражнение 5]) VALUES ('" + names + "', '" + les4ex5.date4 + "', '" + les4ex1.l41 + "', '" + les4ex2.l42 + "', '" + les4ex3.l43 + "', '" + les4ex4.l44 + "', '" + les4ex5.l45 + "')", l4);
+                        l4.Open();
+                        cmdl4.ExecuteNonQuery();
+                        this.урок_4TableAdapter.Fill(this.урок4DataSet.Урок_4);
+                        l4.Close();
+                    }
+
+                    if (ena >= 5)
+                    {
+                        //l5
+                        OleDbConnection l5 = new OleDbConnection();
+                        l5.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl5 = new OleDbCommand("INSERT INTO [Урок 5] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Ссылка на упражнение 4]) VALUES ('" + names + "', '" + les5ex4.date5 + "', '" + les5ex1.l51 + "', '" + les5ex2.l52 + "', '" + les5ex3.l53 + "', '" + les5ex4.l54path + "')", l5);
+                        l5.Open();
+                        cmdl5.ExecuteNonQuery();
+                        this.урок_5TableAdapter.Fill(this.урок5DataSet.Урок_5);
+                        l5.Close();
+                    }
+
+                    if (ena >= 6)
+                    {
+                        //l6
+                        OleDbConnection l6 = new OleDbConnection();
+                        l6.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl6 = new OleDbCommand("INSERT INTO [Урок 6] ([ФИО],[Дата],[Упражнение 1],[Ссылка на упражнение 2],[Упражнение 3],[Ссылка на упражнение 3],[Упражнение 4],[Ссылка на упражнение 5],[Ссылка на упражнение 6],[Ссылка на упражнение 7],[Ссылка на упражнение 8],[Ссылка на упражнение 9]) VALUES ('" + names + "', '" + les6ex9.date6 + "', '" + les6ex1.l61 + "', '" + les6ex2.l62path + "', '" + les6ex3.l63 + "', '" + les6ex3.l63path + "', '" + les6ex4.l64 + "', '" + les6ex5.l65path + "', '" + les6ex6.l66path + "', '" + les6ex7.l67path + "', '" + les6ex8.l68path + "', '" + les6ex9.l69path + "')", l6);
+                        l6.Open();
+                        cmdl6.ExecuteNonQuery();
+                        this.урок_6TableAdapter.Fill(this.урок6DataSet.Урок_6);
+                        l6.Close();
+                    }
+
+                    if (ena >= 7)
+                    {
+                        //l7
+                        OleDbConnection l7 = new OleDbConnection();
+                        l7.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl7 = new OleDbCommand("INSERT INTO [Урок 7] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4]) VALUES ('" + names + "', '" + les7ex4.date7 + "', '" + les7ex1.l71 + "', '" + les7ex2.l72 + "', '" + les7ex3.l73 + "', '" + les7ex4.l74 + "')", l7);
+                        l7.Open();
+                        cmdl7.ExecuteNonQuery();
+                        this.урок_7TableAdapter.Fill(this.урок7DataSet.Урок_7);
+                        l7.Close();
+                    }
+
+                    if (ena >= 8)
+                    {
+                        //l8
+                        OleDbConnection l8 = new OleDbConnection();
+                        l8.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl8 = new OleDbCommand("INSERT INTO [Урок 8] ([ФИО],[Дата],[Упражнение 1],[Ссылка на упражнение 2],[Упражнение 3],[Упражнение 4],[Ссылка на упражнение 5]) VALUES ('" + names + "', '" + les8ex5.date8 + "', '" + les8ex1.l81 + "', '" + les8ex2.l82path + "', '" + les8ex3.l83 + "', '" + les8ex4.l84 + "', '" + les8ex5.l85path + "')", l8);
+                        l8.Open();
+                        cmdl8.ExecuteNonQuery();
+                        this.урок_8TableAdapter.Fill(this.урок8DataSet.Урок_8);
+                        l8.Close();
+                    }
+
+                    if (ena >= 9)
+                    {
+                        //l9
+                        OleDbConnection l9 = new OleDbConnection();
+                        l9.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl9 = new OleDbCommand("INSERT INTO [Урок 9] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4],[Упражнение 5],[Упражнение 6]) VALUES ('" + names + "', '" + les9ex6.date9 + "', '" + les9ex1.l91 + "', '" + les9ex2.l92 + "', '" + les9ex3.l93 + "', '" + les9ex4.l94 + "', '" + les9ex5.l95 + "', '" + les9ex6.l96 + "')", l9);
+                        l9.Open();
+                        cmdl9.ExecuteNonQuery();
+                        this.урок_9TableAdapter.Fill(this.урок9DataSet.Урок_9);
+                        l9.Close();
+                    }
+
+                    if (ena >= 10)
+                    {
+                        //l10
+                        OleDbConnection l10 = new OleDbConnection();
+                        l10.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl10 = new OleDbCommand("INSERT INTO [Урок 10] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Ссылка на упражнение 4],[Ссылка на упражнение 5]) VALUES ('" + names + "', '" + les10ex5.date10 + "', '" + les10ex1.l101 + "', '" + les10ex2.l102 + "', '" + les10ex3.l103 + "', '" + les10ex4.l104path + "', '" + les10ex5.l105path + "')", l10);
+                        l10.Open();
+                        cmdl10.ExecuteNonQuery();
+                        this.урок_10TableAdapter.Fill(this.урок10DataSet.Урок_10);
+                        l10.Close();
+                    }
+
+                    if (ena >= 11)
+                    {
+                        //l11
+                        OleDbConnection l11 = new OleDbConnection();
+                        l11.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl11 = new OleDbCommand("INSERT INTO [Урок 11] ([ФИО],[Дата],[Ссылка на упражнение 1],[Ссылка на упражнение 2],[Ссылка на упражнение 3]) VALUES ('" + names + "', '" + les11ex3.date11 + "', '" + les11ex1.l111path + "', '" + les11ex2.l112path + "', '" + les11ex3.l113path + "')", l11);
+                        l11.Open();
+                        cmdl11.ExecuteNonQuery();
+                        this.урок_11TableAdapter.Fill(this.урок11DataSet.Урок_11);
+                        l11.Close();
+                    }
+
+                    if (ena >= 12)
+                    {
+                        //l12
+                        OleDbConnection l12 = new OleDbConnection();
+                        l12.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl12 = new OleDbCommand("INSERT INTO [Урок 12] ([ФИО],[Дата],[Ссылка на упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4],[Ссылка на упражнение 5]) VALUES ('" + names + "', '" + les12ex5.date12 + "', '" + les12ex1.l121path + "', '" + les12ex2.l122 + "', '" + les12ex3.l123 + "', '" + les12ex4.l124 + "', '" + les12ex5.l125path + "')", l12);
+                        l12.Open();
+                        cmdl12.ExecuteNonQuery();
+                        this.урок_12TableAdapter.Fill(this.урок12DataSet.Урок_12);
+                        l12.Close();
+                    }
+
+                    if (ena >= 13)
+                    {
+                        //l13
+                        OleDbConnection l13 = new OleDbConnection();
+                        l13.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl13 = new OleDbCommand("INSERT INTO [Урок 13] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4],[Упражнение 5],[Ссылка на упражнение 6],[Упражнение 7],[Упражнение 8],[Упражнение 9],[Упражнение 10],[Упражнение 11],[Ссылка на упражнение 12],[Ссылка на упражнение 13]) VALUES ('" + names + "', '" + les13ex13.date13 + "', '" + les13ex1.l131 + "', '" + les13ex2.l132 + "', '" + les13ex3.l133 + "', '" + les13ex4.l134 + "', '" + les13ex5.l135 + "', '" + les13ex6.l136path + "', '" + les13ex7.l137 + "', '" + les13ex8.l138 + "', '" + les13ex9.l139 + "', '" + les13ex10.l1310 + "', '" + les13ex11.l1311 + "', '" + les13ex12.l1312path + "', '" + les13ex13.l1313path + "')", l13);
+                        l13.Open();
+                        cmdl13.ExecuteNonQuery();
+                        this.урок_13TableAdapter.Fill(this.урок13DataSet.Урок_13);
+                        l13.Close();
+                    }
+
+                    if (ena >= 14)
+                    {
+                        //l14
+                        OleDbConnection l14 = new OleDbConnection();
+                        l14.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl14 = new OleDbCommand("INSERT INTO [Урок 14] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4],[Упражнение 5],[Ссылка на упражнение 6]) VALUES ('" + names + "', '" + les14ex6.date14 + "', '" + les14ex1.l141 + "', '" + les14ex2.l142 + "', '" + les14ex3.l143 + "', '" + les14ex4.l144 + "', '" + les14ex5.l145 + "', '" + les14ex6.l146path + "')", l14);
+                        l14.Open();
+                        cmdl14.ExecuteNonQuery();
+                        this.урок_14TableAdapter.Fill(this.урок14DataSet.Урок_14);
+                        l14.Close();
+                    }
+
+                    if (ena >= 15)
+                    {
+                        //l15
+                        OleDbConnection l15 = new OleDbConnection();
+                        l15.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl15 = new OleDbCommand("INSERT INTO [Урок 15] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4],[Упражнение 5],[Упражнение 6],[Упражнение 7],[Упражнение 8]) VALUES ('" + names + "', '" + les15ex8.date15 + "', '" + les15ex1.l151 + "', '" + les15ex2.l152 + "', '" + les15ex3.l153 + "', '" + les15ex4.l154 + "', '" + les15ex5.l155 + "', '" + les15ex6.l156 + "', '" + les15ex7.l157 + "', '" + les15ex8.l158 + "')", l15);
+                        l15.Open();
+                        cmdl15.ExecuteNonQuery();
+                        this.урок_15TableAdapter.Fill(this.урок15DataSet.Урок_15);
+                        l15.Close();
+                    }
+
+                    if (ena >= 16)
+                    {
+                        //l16
+                        OleDbConnection l16 = new OleDbConnection();
+                        l16.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl16 = new OleDbCommand("INSERT INTO [Урок 16] ([ФИО],[Дата],[Упражнение 1],[Упражнение 2],[Упражнение 3],[Упражнение 4],[Ссылка на упражнение 5]) VALUES ('" + names + "', '" + les16ex5.date16 + "', '" + les16ex1.l161 + "', '" + les16ex2.l162 + "', '" + les16ex3.l163 + "', '" + les16ex4.l164 + "', '" + les16ex5.l165path + "')", l16);
+                        l16.Open();
+                        cmdl16.ExecuteNonQuery();
+                        this.урок_16TableAdapter.Fill(this.урок16DataSet.Урок_16);
+                        l16.Close();
+                    }
+                }
+
+                Application.Exit();
+            }
+            catch (System.Data.OleDb.OleDbException)
+            {
+                if (login.student == true)
+                {
+                    if (ena >= 1)
+                    {
+                        //students
+                        OleDbConnection students = new OleDbConnection();
+                        students.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmd = new OleDbCommand("UPDATE [Студенты] SET [ФИО]='" + names + "',[Группа]='" + group + "',[№ последнего урока]='" + last + "' WHERE [ФИО]='" + names + "'", students);
+                        students.Open();
+                        cmd.ExecuteNonQuery();
+                        this.студентыTableAdapter.Fill(this.студентыDataSet.Студенты);
+                        students.Close();
+                    }
+
+                    if (ena >= 1)
+                    {
+                        //l1
+                        OleDbConnection l1 = new OleDbConnection();
+                        l1.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl1 = new OleDbCommand("UPDATE [Урок 1] SET [ФИО]='" + names + "',[Дата]='" + les1ex2.date1 + "',[Упражнение 1]='" + les1ex1.l11 + "',[Упражнение 2]='" + les1ex2.l12 + "' WHERE [ФИО]='" + names + "'", l1);
+                        l1.Open();
+                        cmdl1.ExecuteNonQuery();
+                        this.урок_1TableAdapter.Fill(this.урок1DataSet.Урок_1);
+                        l1.Close();
+                    }
+
+                    if (ena >= 2)
+                    {
+                        //l2
+                        OleDbConnection l2 = new OleDbConnection();
+                        l2.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl2 = new OleDbCommand("UPDATE [Урок 2] SET [ФИО]='" + names + "',[Дата]='" + les2ex7.date2 + "',[Упражнение 1]='" + les2ex1.l21 + "',[Упражнение 2]='" + les2ex2.l22 + "',[Упражнение 3]='" + les2ex3.l23 + "',[Упражнение 4]='" + les2ex4.l24 + "',[Упражнение 5]='" + les2ex5.l25 + "',[Ссылка на упражнение 6]='" + les2ex6.l26path + "',[Ссылка на упражнение 7]='" + les2ex7.l27path + "' WHERE [ФИО]='" + names + "'", l2);
+                        l2.Open();
+                        cmdl2.ExecuteNonQuery();
+                        this.урок_2TableAdapter.Fill(this.урок2DataSet.Урок_2);
+                        l2.Close();
+                    }
+
+                    if (ena >= 3)
+                    {
+                        //l3
+                        OleDbConnection l3 = new OleDbConnection();
+                        l3.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl3 = new OleDbCommand("UPDATE [Урок 3] SET [ФИО]='" + names + "',[Дата]='" + les3ex3.date3 + "',[Упражнение 1]='" + les3ex1.l31 + "',[Упражнение 2]='" + les3ex2.l32 + "',[Упражнение 3]='" + les3ex3.l33 + "' WHERE [ФИО]='" + names + "'", l3);
+                        l3.Open();
+                        cmdl3.ExecuteNonQuery();
+                        this.урок_3TableAdapter.Fill(this.урок3DataSet.Урок_3);
+                        l3.Close();
+                    }
+
+                    if (ena >= 4)
+                    {
+                        //l4
+                        OleDbConnection l4 = new OleDbConnection();
+                        l4.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl4 = new OleDbCommand("UPDATE [Урок 4] SET [ФИО]='" + names + "',[Дата]='" + les4ex5.date4 + "',[Упражнение 1]='" + les4ex1.l41 + "',[Упражнение 2]='" + les4ex2.l42 + "',[Упражнение 3]='" + les4ex3.l43 + "',[Упражнение 4]='" + les4ex4.l44 + "',[Упражнение 5]='" + les4ex5.l45 + "' WHERE [ФИО]='" + names + "'", l4);
+                        l4.Open();
+                        cmdl4.ExecuteNonQuery();
+                        this.урок_4TableAdapter.Fill(this.урок4DataSet.Урок_4);
+                        l4.Close();
+                    }
+
+                    if (ena >= 5)
+                    {
+                        //l5
+                        OleDbConnection l5 = new OleDbConnection();
+                        l5.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl5 = new OleDbCommand("UPDATE [Урок 5] SET [ФИО]='" + names + "',[Дата]='" + les5ex4.date5 + "',[Упражнение 1]='" + les5ex1.l51 + "',[Упражнение 2]='" + les5ex2.l52 + "',[Упражнение 3]='" + les5ex3.l53 + "',[Ссылка на упражнение 4]='" + les5ex4.l54path + "' WHERE [ФИО]='" + names + "'", l5);
+                        l5.Open();
+                        cmdl5.ExecuteNonQuery();
+                        this.урок_5TableAdapter.Fill(this.урок5DataSet.Урок_5);
+                        l5.Close();
+                    }
+
+                    if (ena >= 6)
+                    {
+                        //l6
+                        OleDbConnection l6 = new OleDbConnection();
+                        l6.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl6 = new OleDbCommand("UPDATE [Урок 6] SET [ФИО]='" + names + "',[Дата]='" + les6ex9.date6 + "',[Упражнение 1]='" + les6ex1.l61 + "',[Упражнение 2]='" + les6ex2.l62path + "',[Упражнение 3]='" + les6ex3.l63 + "',[Ссылка на упражнение 3]='" + les6ex3.l63path + "',[Упражнение 4]='" + les6ex4.l64 + "',[Ссылка на упражнение 5]='" + les6ex5.l65path + "',[Ссылка на упражнение 6]='" + les6ex6.l66path + "',[Ссылка на упражнение 7]='" + les6ex7.l67path + "',[Ссылка на упражнение 8]='" + les6ex8.l68path + "',[Ссылка на упражнение 9]='" + les6ex9.l69path + "' WHERE [ФИО]='" + names + "'", l6);
+                        l6.Open();
+                        cmdl6.ExecuteNonQuery();
+                        this.урок_6TableAdapter.Fill(this.урок6DataSet.Урок_6);
+                        l6.Close();
+                    }
+
+                    if (ena >= 7)
+                    {
+                        //l7
+                        OleDbConnection l7 = new OleDbConnection();
+                        l7.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl7 = new OleDbCommand("UPDATE [Урок 7] SET [ФИО]='" + names + "',[Дата]='" + les7ex4.date7 + "',[Упражнение 1]='" + les7ex1.l71 + "',[Упражнение 2]='" + les7ex2.l72 + "',[Упражнение 3]='" + les7ex3.l73 + "',[Упражнение 4]='" + les7ex4.l74 + "' WHERE [ФИО]='" + names + "'", l7);
+                        l7.Open();
+                        cmdl7.ExecuteNonQuery();
+                        this.урок_7TableAdapter.Fill(this.урок7DataSet.Урок_7);
+                        l7.Close();
+                    }
+
+                    if (ena >= 8)
+                    {
+                        //l8
+                        OleDbConnection l8 = new OleDbConnection();
+                        l8.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl8 = new OleDbCommand("UPDATE [Урок 8] SET [ФИО]='" + names + "',[Дата]='" + les8ex5.date8 + "',[Упражнение 1]='" + les8ex1.l81 + "',[Ссылка на упражнение 2]='" + les8ex2.l82path + "',[Упражнение 3]='" + les8ex3.l83 + "',[Упражнение 4]='" + les8ex4.l84 + "',[Ссылка на упражнение 5]='" + les8ex5.l85path + "' WHERE [ФИО]='" + names + "'", l8);
+                        l8.Open();
+                        cmdl8.ExecuteNonQuery();
+                        this.урок_8TableAdapter.Fill(this.урок8DataSet.Урок_8);
+                        l8.Close();
+                    }
+
+                    if (ena >= 9)
+                    {
+                        //l9
+                        OleDbConnection l9 = new OleDbConnection();
+                        l9.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl9 = new OleDbCommand("UPDATE [Урок 9] SET [ФИО]='" + names + "',[Дата]='" + les9ex6.date9 + "',[Упражнение 1]='" + les9ex1.l91 + "',[Упражнение 2]='" + les9ex2.l92 + "',[Упражнение 3]='" + les9ex3.l93 + "',[Упражнение 4]='" + les9ex4.l94 + "',[Упражнение 5]='" + les9ex5.l95 + "',[Упражнение 6]='" + les9ex6.l96 + "' WHERE [ФИО]='" + names + "'", l9);
+                        l9.Open();
+                        cmdl9.ExecuteNonQuery();
+                        this.урок_9TableAdapter.Fill(this.урок9DataSet.Урок_9);
+                        l9.Close();
+                    }
+
+                    if (ena >= 10)
+                    {
+                        //l10
+                        OleDbConnection l10 = new OleDbConnection();
+                        l10.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl10 = new OleDbCommand("UPDATE [Урок 10] SET [ФИО]='" + names + "',[Дата]='" + les10ex5.date10 + "',[Упражнение 1]='" + les10ex1.l101 + "',[Упражнение 2]='" + les10ex2.l102 + "',[Упражнение 3]='" + les10ex3.l103 + "',[Ссылка на упражнение 4]='" + les10ex4.l104path + "',[Ссылка на упражнение 5]='" + les10ex5.l105path + "' WHERE [ФИО]='" + names + "'", l10);
+                        l10.Open();
+                        cmdl10.ExecuteNonQuery();
+                        this.урок_10TableAdapter.Fill(this.урок10DataSet.Урок_10);
+                        l10.Close();
+                    }
+
+                    if (ena >= 11)
+                    {
+                        //l11
+                        OleDbConnection l11 = new OleDbConnection();
+                        l11.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl11 = new OleDbCommand("UPDATE [Урок 11] SET [ФИО]='" + names + "',[Дата]='" + les11ex3.date11 + "',[Ссылка на упражнение 1]='" + les11ex1.l111path + "',[Ссылка на упражнение 2]='" + les11ex2.l112path + "',[Ссылка на упражнение 3]='" + les11ex3.l113path + "' WHERE [ФИО]='" + names + "'", l11);
+                        l11.Open();
+                        cmdl11.ExecuteNonQuery();
+                        this.урок_11TableAdapter.Fill(this.урок11DataSet.Урок_11);
+                        l11.Close();
+                    }
+
+                    if (ena >= 12)
+                    {
+                        //l12
+                        OleDbConnection l12 = new OleDbConnection();
+                        l12.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl12 = new OleDbCommand("UPDATE [Урок 12] SET [ФИО]='" + names + "',[Дата]='" + les12ex5.date12 + "',[Ссылка на упражнение 1]='" + les12ex1.l121path + "',[Упражнение 2]='" + les12ex2.l122 + "',[Упражнение 3]='" + les12ex3.l123 + "',[Упражнение 4]='" + les12ex4.l124 + "',[Ссылка на упражнение 5]='" + les12ex5.l125path + "' WHERE [ФИО]='" + names + "'", l12);
+                        l12.Open();
+                        cmdl12.ExecuteNonQuery();
+                        this.урок_12TableAdapter.Fill(this.урок12DataSet.Урок_12);
+                        l12.Close();
+                    }
+
+                    if (ena >= 13)
+                    {
+                        //l13
+                        OleDbConnection l13 = new OleDbConnection();
+                        l13.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl13 = new OleDbCommand("UPDATE [Урок 13] SET [ФИО]='" + names + "',[Дата]='" + les13ex13.date13 + "',[Упражнение 1]='" + les13ex1.l131 + "',[Упражнение 2]='" + les13ex2.l132 + "',[Упражнение 3]='" + les13ex3.l133 + "',[Упражнение 4]='" + les13ex4.l134 + "',[Упражнение 5]='" + les13ex5.l135 + "',[Ссылка на упражнение 6]='" + les13ex6.l136path + "',[Упражнение 7]='" + les13ex7.l137 + "',[Упражнение 8]='" + les13ex8.l138 + "',[Упражнение 9]='" + les13ex9.l139 + "',[Упражнение 10]='" + les13ex10.l1310 + "',[Упражнение 11]='" + les13ex11.l1311 + "',[Ссылка на упражнение 12]='" + les13ex12.l1312path + "',[Ссылка на упражнение 13]='" + les13ex13.l1313path + "' WHERE [ФИО]='" + names + "'", l13);
+                        l13.Open();
+                        cmdl13.ExecuteNonQuery();
+                        this.урок_13TableAdapter.Fill(this.урок13DataSet.Урок_13);
+                        l13.Close();
+                    }
+
+                    if (ena >= 14)
+                    {
+                        //l14
+                        OleDbConnection l14 = new OleDbConnection();
+                        l14.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl14 = new OleDbCommand("UPDATE [Урок 14] SET [ФИО]='" + names + "',[Дата]='" + les14ex6.date14 + "',[Упражнение 1]='" + les14ex1.l141 + "',[Упражнение 2]='" + les14ex2.l142 + "',[Упражнение 3]='" + les14ex3.l143 + "',[Упражнение 4]='" + les14ex4.l144 + "',[Упражнение 5]='" + les14ex5.l145 + "',[Упражнение 6]='" + les14ex6.l146path + "' WHERE [ФИО]='" + names + "'", l14);
+                        l14.Open();
+                        cmdl14.ExecuteNonQuery();
+                        this.урок_14TableAdapter.Fill(this.урок14DataSet.Урок_14);
+                        l14.Close();
+                    }
+
+                    if (ena >= 15)
+                    {
+                        //l15
+                        OleDbConnection l15 = new OleDbConnection();
+                        l15.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl15 = new OleDbCommand("UPDATE [Урок 15] SET [ФИО]='" + names + "',[Дата]='" + les15ex8.date15 + "',[Упражнение 1]='" + les15ex1.l151 + "',[Упражнение 2]='" + les15ex2.l152 + "',[Упражнение 3]='" + les15ex3.l153 + "',[Упражнение 4]='" + les15ex4.l154 + "',[Упражнение 5]='" + les15ex5.l155 + "',[Упражнение 6]='" + les15ex6.l156 + "',[Упражнение 7]='" + les15ex7.l157 + "',[Упражнение 8]='" + les15ex8.l158 + "' WHERE [ФИО]='" + names + "'", l15);
+                        l15.Open();
+                        cmdl15.ExecuteNonQuery();
+                        this.урок_15TableAdapter.Fill(this.урок15DataSet.Урок_15);
+                        l15.Close();
+                    }
+
+                    if (ena >= 16)
+                    {
+                        //l16
+                        OleDbConnection l16 = new OleDbConnection();
+                        l16.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Результаты.accdb;Persist Security Info=False;";
+                        OleDbCommand cmdl16 = new OleDbCommand("UPDATE [Урок 16] SET [ФИО]='" + names + "',[Дата]='" + les16ex5.date16 + "',[Упражнение 1]='" + les16ex1.l161 + "',[Упражнение 2]='" + les16ex2.l162 + "',[Упражнение 3]='" + les16ex3.l163 + "',[Упражнение 4]='" + les16ex4.l164 + "',[Ссылка на упражнение 5]='" + les16ex5.l165path + "' WHERE [ФИО]='" + names + "'", l16);
+                        l16.Open();
+                        cmdl16.ExecuteNonQuery();
+                        this.урок_16TableAdapter.Fill(this.урок16DataSet.Урок_16);
+                        l16.Close();
+                    }
+                }
+                Application.Exit();
+            }
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            pictureBox1.Image = Image.FromFile("buttons\\exitaft.png");
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            pictureBox1.Image = Image.FromFile("buttons\\exitbef.png");
+        }
+
+        private void lesson1_Click(object sender, EventArgs e)
+        {
+            ena = 1;
+            if (login.student == true)
+            {
+                lesson1.Enabled = false;
+                lesson2.Enabled = true;
+            }
+            les1ex1 l1e1 = new les1ex1();
+            l1e1.ShowDialog();
+        }
+
+        private void lesson2_Click(object sender, EventArgs e)
+        {
+            ena = 2;
+            if (login.student == true)
+            {
+                lesson2.Enabled = false;
+                lesson3.Enabled = true;
+            }
+            les2ex1 l2e1 = new les2ex1();
+            l2e1.ShowDialog();
+        }
+
+        private void lesson3_Click(object sender, EventArgs e)
+        {
+            ena = 3;
+            if (login.student == true)
+            {
+                lesson3.Enabled = false;
+                lesson4.Enabled = true;
+            }
+            les3ex1 l3e1 = new les3ex1();
+            l3e1.ShowDialog();
+        }
+
+        private void lesson4_Click(object sender, EventArgs e)
+        {
+            ena = 4;
+            if (login.student == true)
+            {
+                lesson4.Enabled = false;
+                lesson5.Enabled = true;
+            }
+            les4ex1 l4e1 = new les4ex1();
+            l4e1.ShowDialog();
+        }
+
+        private void lesson5_Click(object sender, EventArgs e)
+        {
+            ena = 5;
+            if (login.student == true)
+            {
+                lesson5.Enabled = false;
+                lesson6.Enabled = true;
+            }
+            les5ex1 l5e1 = new les5ex1();
+            l5e1.ShowDialog();
+        }
+
+        private void lesson6_Click(object sender, EventArgs e)
+        {
+            ena = 6;
+            if (login.student == true)
+            {
+                lesson6.Enabled = false;
+                lesson7.Enabled = true;
+            }
+            les6ex1 l6e1 = new les6ex1();
+            l6e1.ShowDialog();
+        }
+
+        private void lesson7_Click(object sender, EventArgs e)
+        {
+            ena = 7;
+            if (login.student == true)
+            {
+                lesson7.Enabled = false;
+                lesson8.Enabled = true;
+            }
+            les7ex1 l7e1 = new les7ex1();
+            l7e1.ShowDialog();
+        }
+
+        private void lesson8_Click(object sender, EventArgs e)
+        {
+            ena = 8;
+            if (login.student == true)
+            {
+                lesson8.Enabled = false;
+                lesson9.Enabled = true;
+            }
+            les8ex1 l8e1 = new les8ex1();
+            l8e1.ShowDialog();
+        }
+
+        private void lesson9_Click(object sender, EventArgs e)
+        {
+            ena = 9;
+            if (login.student == true)
+            {
+                lesson9.Enabled = false;
+                lesson10.Enabled = true;
+            }
+            les9ex1 l9e1 = new les9ex1();
+            l9e1.ShowDialog();
+        }
+
+        private void lesson10_Click(object sender, EventArgs e)
+        {
+            ena = 10;
+            if (login.student == true)
+            {
+                lesson10.Enabled = false;
+                lesson11.Enabled = true;
+            }
+            les10ex1 l10e1 = new les10ex1();
+            l10e1.ShowDialog();
+        }
+
+        private void lesson11_Click(object sender, EventArgs e)
+        {
+            ena = 11;
+            if (login.student == true)
+            {
+                lesson11.Enabled = false;
+                lesson12.Enabled = true;
+            }
+            les11ex1 l11e1 = new les11ex1();
+            l11e1.ShowDialog();
+        }
+
+        private void lesson12_Click(object sender, EventArgs e)
+        {
+            ena = 12;
+            if (login.student == true)
+            {
+                lesson12.Enabled = false;
+                lesson13.Enabled = true;
+            }
+            les12ex1 l12e1 = new les12ex1();
+            l12e1.ShowDialog();
+        }
+
+        private void lesson13_Click(object sender, EventArgs e)
+        {
+            ena = 13;
+            if (login.student == true)
+            {
+                lesson13.Enabled = false;
+                lesson14.Enabled = true;
+            }
+            les13ex1 l13e1 = new les13ex1();
+            l13e1.ShowDialog();
+        }
+
+        private void lesson14_Click(object sender, EventArgs e)
+        {
+            ena = 14;
+            if (login.student == true)
+            {
+                lesson14.Enabled = false;
+                lesson15.Enabled = true;
+            }
+            les14ex1 l14e1 = new les14ex1();
+            l14e1.ShowDialog();
+        }
+
+        private void lesson15_Click(object sender, EventArgs e)
+        {
+            ena = 15;
+            if (login.student == true)
+            {
+                lesson15.Enabled = false;
+                lesson16.Enabled = true;
+            }
+            les15ex1 l15e1 = new les15ex1();
+            l15e1.ShowDialog();
+        }
+
+        private void lesson16_Click(object sender, EventArgs e)
+        {
+            ena = 16;
+            if (login.student == true) lesson16.Enabled = false;
+            les16ex1 l16e1 = new les16ex1();
+            l16e1.ShowDialog();
+        }
+
+        private void results_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("Результаты.accdb");
+            }
+            catch (System.ComponentModel.Win32Exception) { MessageBox.Show("База данных не найдена!"); }
+        }
+
+        private void about_Click(object sender, EventArgs e)
+        {
+            about ab = new about();
+            ab.ShowDialog();
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+            this.урок_16TableAdapter.Fill(this.урок16DataSet.Урок_16);
+            this.урок_15TableAdapter.Fill(this.урок15DataSet.Урок_15);
+            this.урок_14TableAdapter.Fill(this.урок14DataSet.Урок_14);
+            this.урок_13TableAdapter.Fill(this.урок13DataSet.Урок_13);
+            this.урок_12TableAdapter.Fill(this.урок12DataSet.Урок_12);
+            this.урок_11TableAdapter.Fill(this.урок11DataSet.Урок_11);
+            this.урок_10TableAdapter.Fill(this.урок10DataSet.Урок_10);
+            this.урок_9TableAdapter.Fill(this.урок9DataSet.Урок_9);
+            this.урок_8TableAdapter.Fill(this.урок8DataSet.Урок_8);
+            this.урок_7TableAdapter.Fill(this.урок7DataSet.Урок_7);
+            this.урок_6TableAdapter.Fill(this.урок6DataSet.Урок_6);
+            this.урок_5TableAdapter.Fill(this.урок5DataSet.Урок_5);
+            this.урок_4TableAdapter.Fill(this.урок4DataSet.Урок_4);
+            this.урок_3TableAdapter.Fill(this.урок3DataSet.Урок_3);
+            this.урок_2TableAdapter.Fill(this.урок2DataSet.Урок_2);
+            this.урок_1TableAdapter.Fill(this.урок1DataSet.Урок_1);
+            this.студентыTableAdapter.Fill(this.студентыDataSet.Студенты);
+
+        }
+    }
+}
